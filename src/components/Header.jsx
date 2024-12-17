@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 export default function Header() {
   return (
-    <header class="header">
+    <header className="header">
       <div>
         <Link to="/">
           <button>Home</button>

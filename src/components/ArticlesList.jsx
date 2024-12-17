@@ -11,7 +11,6 @@ export default function ArticlesList() {
     setIsLoading(true);
     getArticles()
       .then((articles) => {
-        console.log(articles);
         setArticles(articles);
         setIsLoading(false);
       })
@@ -31,7 +30,7 @@ export default function ArticlesList() {
   }
 
   return (
-    <div class="articlesList">
+    <div className="articlesList">
       <p>Articles List</p>
       <ul>
         {articles.map((article, index) => (

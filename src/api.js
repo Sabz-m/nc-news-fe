@@ -13,11 +13,22 @@ export const getArticles = (sortBy, order, topic) => {
     },
   })
     .then(({ data: { articles } }) => {
-      console.log(articles);
       return articles;
     })
     .catch((error) => {
       console.error("Error fetching articles:", error);
+      throw error;
+    });
+};
+
+export const getArticle = (article_id) => {
+  return NewsApi.get(`/articles/${article_id}`)
+    .then(({ data: { article } }) => {
+      console.log(article);
+      return article;
+    })
+    .catch((error) => {
+      console.error("Error fetching article:", error);
       throw error;
     });
 };

@@ -8,6 +8,8 @@
 }
 
 .header {
+  position: sticky;
+  top: 0;
   border: 2px solid rgb(13, 255, 0);
   display: flex;
   justify-content: space-between;
@@ -27,8 +29,8 @@
 }
 
 .articlesList img {
-  height: 100px;
-  width: 100px;
+  max-height: 150px;
+  max-width: 150px;
 }
 
 .articleCard {
@@ -43,4 +45,7 @@
   overflow: hidden;
   color: black;
   border-radius: 20px;
+}
+
+.articleCardFooter {
 }
