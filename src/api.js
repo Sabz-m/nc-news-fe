@@ -11,37 +11,32 @@ export const getArticles = (sortBy, order, topic) => {
       type: order,
       type: topic,
     },
-  })
-    .then(({ data: { articles } }) => {
-      return articles;
-    })
-    .catch((error) => {
-      console.error("Error fetching articles:", error);
-      throw error;
-    });
+  }).then(({ data: { articles } }) => {
+    return articles;
+  });
 };
 
 export const getArticle = (article_id) => {
-  return NewsApi.get(`/articles/${article_id}`)
-    .then(({ data: { article } }) => {
-      console.log(article);
+  return NewsApi.get(`/articles/${article_id}`).then(
+    ({ data: { article } }) => {
       return article;
-    })
-    .catch((error) => {
-      console.error("Error fetching article:", error);
-      throw error;
-    });
+    }
+  );
 };
 
 export const getComments = (article_id) => {
-  return NewsApi.get(`/articles/${article_id}/comments`)
-    .then(({ data: { comments } }) => {
-      console.log(comments);
-      console.log(typeof comments);
+  return NewsApi.get(`/articles/${article_id}/comments`).then(
+    ({ data: { comments } }) => {
       return comments;
-    })
-    .catch((error) => {
-      console.error("Error fetching comments:", error);
-      throw error;
-    });
+    }
+  );
+};
+
+export const updateArticleVotes = (article_id, num) => {
+  return NewsApi.patch(`/articles/${article_id}`, { inc_votes: num }).then(
+    ({ data }) => {
+      console.log(data);
+      return data;
+    }
+  );
 };

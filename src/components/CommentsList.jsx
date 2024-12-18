@@ -11,7 +11,6 @@ export default function CommentsList({ article_id }) {
     setIsLoading(true);
     getComments(article_id)
       .then((comments) => {
-        console.log(comments, "<----- comments");
         setComments(comments);
         setIsLoading(false);
       })

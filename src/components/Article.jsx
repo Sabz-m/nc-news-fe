@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getArticle } from "../api";
 import { useParams } from "react-router-dom";
 import CommentsList from "./commentsList";
-import VotesButtons from "./VotesButton";
+import VotesHandler from "./VotesHandler";
 
 export default function Article() {
   const { article_id } = useParams();
@@ -15,6 +15,7 @@ export default function Article() {
     getArticle(article_id)
       .then((article) => {
         console.log(article);
+
         setArticle(article);
         setIsLoading(false);
       })
@@ -26,7 +27,7 @@ export default function Article() {
   }, [article_id]);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <p>Loading... Article</p>;
   }
 
   if (error) {
@@ -42,7 +43,11 @@ export default function Article() {
       <img src={article.article_img_url}></img>
       <p>Created at: {article.created_at}</p>
       <p>Votes: {article.votes}</p>
-      <VotesButtons />
+      <VotesHandler
+        article_id={article.article_id}
+        votes={article.votes}
+        setArticle={setArticle}
+      />
       <CommentsList article_id={article_id} />
     </div>
   );
