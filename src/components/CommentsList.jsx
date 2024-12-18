@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getComments } from "../api";
 import CommentCard from "./CommentCard";
+import AddComment from "./AddComment";
 
 export default function CommentsList({ article_id }) {
   const [comments, setComments] = useState([]);
@@ -19,7 +20,7 @@ export default function CommentsList({ article_id }) {
         console.error("Error fetching Comments:", error);
         setIsLoading(false);
       });
-  }, []);
+  }, [article_id]);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -37,6 +38,7 @@ export default function CommentsList({ article_id }) {
           <CommentCard key={index} comment={comment} />
         ))}
       </ul>
+      <AddComment article_id={article_id} setComments={setComments} />
     </div>
   );
 }

@@ -24,7 +24,7 @@ export default function Article() {
         console.error("Error fetching articles:", error);
         setIsLoading(false);
       });
-  }, [article_id]);
+  }, [article_id, setArticle]);
 
   if (isLoading) {
     return <p>Loading... Article</p>;
@@ -43,12 +43,8 @@ export default function Article() {
       <img src={article.article_img_url}></img>
       <p>Created at: {article.created_at}</p>
       <p>Votes: {article.votes}</p>
-      <VotesHandler
-        article_id={article.article_id}
-        votes={article.votes}
-        setArticle={setArticle}
-      />
-      <CommentsList article_id={article_id} />
+      <VotesHandler article_id={article.article_id} setArticle={setArticle} />
+      <CommentsList article_id={article_id} setArticle={setArticle} />
     </div>
   );
 }

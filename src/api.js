@@ -35,8 +35,17 @@ export const getComments = (article_id) => {
 export const updateArticleVotes = (article_id, num) => {
   return NewsApi.patch(`/articles/${article_id}`, { inc_votes: num }).then(
     ({ data }) => {
-      console.log(data);
       return data;
     }
   );
+};
+
+export const addComment = (article_id, username, comment) => {
+  return NewsApi.post(`/articles/${article_id}/comments`, {
+    username: username,
+    body: comment,
+  }).then(({ data }) => {
+    console.log(data);
+    return data;
+  });
 };

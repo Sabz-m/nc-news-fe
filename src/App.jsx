@@ -5,7 +5,6 @@ import Home from "./components/Home";
 import ArticlesList from "./components/ArticlesList";
 import Footer from "./components/Footer";
 import Article from "./components/Article";
-import CommentsList from "./components/commentsList";
 
 function App() {
   return (
