@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getArticle } from "../api";
 import { useParams } from "react-router-dom";
 import CommentsList from "./commentsList";
+import VotesButtons from "./VotesButton";
 
 export default function Article() {
   const { article_id } = useParams();
@@ -41,6 +42,7 @@ export default function Article() {
       <img src={article.article_img_url}></img>
       <p>Created at: {article.created_at}</p>
       <p>Votes: {article.votes}</p>
+      <VotesButtons />
       <CommentsList article_id={article_id} />
     </div>
   );
