@@ -32,3 +32,16 @@ export const getArticle = (article_id) => {
       throw error;
     });
 };
+
+export const getComments = (article_id) => {
+  return NewsApi.get(`/articles/${article_id}/comments`)
+    .then(({ data: { comments } }) => {
+      console.log(comments);
+      console.log(typeof comments);
+      return comments;
+    })
+    .catch((error) => {
+      console.error("Error fetching comments:", error);
+      throw error;
+    });
+};

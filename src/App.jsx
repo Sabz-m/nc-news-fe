@@ -1,10 +1,11 @@
-import { Route, Routes } from "react-router";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import ArticlesList from "./components/ArticlesList";
 import Footer from "./components/Footer";
 import Article from "./components/Article";
+import CommentsList from "./components/commentsList";
 
 function App() {
   return (
@@ -14,6 +15,10 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/articles" element={<ArticlesList />}></Route>
         <Route path="/articles/:article_id" element={<Article />}></Route>
+        <Route
+          path="/articles/:article_id/comments"
+          element={<Article />}
+        ></Route>
       </Routes>
 
       <Footer />

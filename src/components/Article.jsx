@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getArticle } from "../api";
-import { Link, useParams } from "react-router";
+import { useParams } from "react-router-dom";
+import CommentsList from "./commentsList";
 
 export default function Article() {
   const { article_id } = useParams();
@@ -40,9 +41,7 @@ export default function Article() {
       <img src={article.article_img_url}></img>
       <p>Created at: {article.created_at}</p>
       <p>Votes: {article.votes}</p>
-      <Link>
-        <button>Add comment</button>
-      </Link>
+      <CommentsList article_id={article_id} />
     </div>
   );
 }

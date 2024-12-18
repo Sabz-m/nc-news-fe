@@ -3,25 +3,29 @@
   max-width: 780px;
   max-height: 1688px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
 .header {
-  position: sticky;
-  top: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   border: 2px solid rgb(13, 255, 0);
   display: flex;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background-color: rgb(55, 55, 55);
 }
 
 .footer {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   border: 2px solid rgb(13, 255, 0);
   display: flex;
   justify-content: space-between;
-  text-align: center;
   position: sticky;
   bottom: 0;
+  background-color: rgb(55, 55, 55);
 }
 
 .articlesList {
@@ -30,14 +34,14 @@
 
 .articlesList img {
   max-height: 150px;
-  max-width: 150px;
+  max-width: 170px;
 }
 
 .articleCard {
   display: inline flex;
   margin: 10px;
   height: 150px;
-  width: 300px;
+  width: 320px;
   max-height: 300px;
   max-width: 300px;
   font-size: 10px;
@@ -47,5 +51,16 @@
   border-radius: 20px;
 }
 
-.articleCardFooter {
+.commentCard {
+  margin: 10px;
+  height: 150px;
+  width: 90%;
+  max-height: 300px;
+  max-width: 80%x;
+  font-size: 14px;
+  background: linear-gradient(135deg, rgb(236, 236, 236), rgb(160, 160, 160));
+  overflow: hidden;
+  color: black;
+  border-radius: 20px;
+  text-align: left;
 }
