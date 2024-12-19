@@ -35,7 +35,11 @@ export default function CommentsList({ article_id }) {
       <p>Comments List</p>
       <ul>
         {comments.map((comment, index) => (
-          <CommentCard key={index} comment={comment} />
+          <CommentCard
+            key={index}
+            comment={comment}
+            setComments={setComments}
+          />
         ))}
       </ul>
       <AddComment article_id={article_id} setComments={setComments} />
