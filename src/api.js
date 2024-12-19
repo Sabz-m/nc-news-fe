@@ -49,3 +49,10 @@ export const addComment = (article_id, username, comment) => {
     return data;
   });
 };
+
+export const deleteComment = (comment_id) => {
+  return NewsApi.delete(`/comments/${comment_id}`).then(({ data }) => {
+    console.log(data);
+    return data;
+  });
+};
