@@ -5,11 +5,12 @@ const NewsApi = axios.create({
 });
 
 export const getArticles = (sortBy, order, topic) => {
+  console.log(topic);
   return NewsApi.get("/articles", {
     params: {
-      type: sortBy,
-      type: order,
-      type: topic,
+      sortBy: sortBy,
+      order: order,
+      topic: topic,
     },
   }).then(({ data: { articles } }) => {
     return articles;
@@ -54,5 +55,11 @@ export const deleteComment = (comment_id) => {
   return NewsApi.delete(`/comments/${comment_id}`).then(({ data }) => {
     console.log(data);
     return data;
+  });
+};
+
+export const getTopics = () => {
+  return NewsApi.get("/topics").then(({ data: { topics } }) => {
+    return topics;
   });
 };
