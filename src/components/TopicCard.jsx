@@ -1,11 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function TopicCard({
-  topic,
-  setSelectedTopic,
-  selectedTopic,
-  setTopic,
-}) {
+export default function TopicCard({ topic, setSelectedTopic, setTopic }) {
   const handleClick = () => {
     setTopic(topic.slug);
     setSelectedTopic(topic.slug);
