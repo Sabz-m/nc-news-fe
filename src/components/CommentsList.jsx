@@ -3,7 +3,7 @@ import { getComments } from "../api";
 import CommentCard from "./CommentCard";
 import AddComment from "./AddComment";
 
-export default function CommentsList({ article_id }) {
+export default function CommentsList({ article_id, username }) {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -34,15 +34,21 @@ export default function CommentsList({ article_id }) {
     <div className="commentsList">
       <p>Comments List</p>
       <ul>
-        {comments.map((comment, index) => (
-          <CommentCard
-            key={index}
-            comment={comment}
-            setComments={setComments}
-          />
+        {comments.map((comment) => (
+          <div>
+            <CommentCard
+              key={comment.comment_id}
+              comment={comment}
+              setComments={setComments}
+            />
+          </div>
         ))}
       </ul>
-      <AddComment article_id={article_id} setComments={setComments} />
+      <AddComment
+        article_id={article_id}
+        username={username}
+        setComments={setComments}
+      />
     </div>
   );
 }

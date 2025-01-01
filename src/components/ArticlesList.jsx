@@ -25,6 +25,7 @@ export default function ArticlesList() {
         setIsLoading(false);
       })
       .catch((error) => {
+        console.log(error);
         setError(true);
         console.error("Error fetching articles:", error);
         setIsLoading(false);

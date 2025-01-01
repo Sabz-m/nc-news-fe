@@ -1,28 +1,31 @@
 import { useState } from "react";
 import { addComment } from "../api";
 
-export default function AddComment({ article_id, setComments }) {
+export default function AddComment({ article_id, setComments, username }) {
   const [isPosting, setIsPosting] = useState(false);
-  const [username, setUsername] = useState("");
+  const [error, setError] = useState(null);
   const [comment, setComment] = useState("");
-  const handleChangeUsername = (e) => {
-    setUsername(e.target.value);
-  };
 
   const handleChangeComment = (e) => {
     setComment(e.target.value);
   };
+  console.log(username);
 
   const handleSubmit = (e) => {
     setIsPosting(true);
+    setError(false);
     e.preventDefault();
     addComment(article_id, username, comment)
       .then(({ comment }) => {
         setComments((previousComments) => [comment, ...previousComments]);
       })
       .then(() => {
-        setUsername("");
         setComment("");
+        setIsPosting(false);
+      })
+      .catch((error) => {
+        setError(true);
+        console.error("Error Posting Comment:", error);
         setIsPosting(false);
       });
   };
@@ -31,18 +34,12 @@ export default function AddComment({ article_id, setComments }) {
     return <p>One momment your comments Posting</p>;
   }
 
+  if (error) {
+    return <p>Error Posting Comment</p>;
+  }
+
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        Username:
-        <input
-          placeholder="enter your username here"
-          type="text"
-          onChange={handleChangeUsername}
-          value={username}
-          required
-        />
-      </label>
       <label>
         Comment:
         <input

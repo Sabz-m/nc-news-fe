@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import CommentsList from "./commentsList";
 import VotesHandler from "./VotesHandler";
 
-export default function Article() {
+export default function Article({ username }) {
   const { article_id } = useParams();
   const [article, setArticle] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +21,7 @@ export default function Article() {
       })
       .catch((error) => {
         setError(true);
-        console.error("Error fetching articles:", error);
+        console.error("Article does not exist");
         setIsLoading(false);
       });
   }, [article_id, setArticle]);
@@ -31,7 +31,7 @@ export default function Article() {
   }
 
   if (error) {
-    return <p>Error fetching article data: {error.message}</p>;
+    return <p>Article does not exist</p>;
   }
 
   return (
@@ -44,7 +44,11 @@ export default function Article() {
       <p>Created at: {article.created_at}</p>
       <p>Votes: {article.votes}</p>
       <VotesHandler article_id={article.article_id} setArticle={setArticle} />
-      <CommentsList article_id={article_id} setArticle={setArticle} />
+      <CommentsList
+        article_id={article_id}
+        username={username}
+        setArticle={setArticle}
+      />
     </div>
   );
 }

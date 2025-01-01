@@ -18,7 +18,7 @@ export default function TopicsList({ setTopic }) {
       })
       .catch((error) => {
         setError(true);
-        console.error("Error fetching topics:", error);
+        console.error("Topic does not exist", error);
         setIsLoading(false);
       });
   }, []);
@@ -28,7 +28,7 @@ export default function TopicsList({ setTopic }) {
   }
 
   if (error) {
-    return <p>Error fetching topics data: {error.message}</p>;
+    return <p>Topic does not exist</p>;
   }
 
   return (

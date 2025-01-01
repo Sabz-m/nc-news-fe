@@ -63,3 +63,10 @@ export const getTopics = () => {
     return topics;
   });
 };
+
+export const getUser = () => {
+  return NewsApi.get("/users").then(({ data: { users } }) => {
+    console.log(users);
+    return users;
+  });
+};
