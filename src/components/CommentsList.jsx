@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getComments } from "../api";
 import CommentCard from "./CommentCard";
 import AddComment from "./AddComment";
+import { Link } from "react-router-dom";
 
 export default function CommentsList({ article_id, username }) {
   const [comments, setComments] = useState([]);
@@ -33,22 +34,33 @@ export default function CommentsList({ article_id, username }) {
   return (
     <div className="commentsList">
       <p>Comments List</p>
-      <ul>
-        {comments.map((comment) => (
-          <div>
-            <CommentCard
-              key={comment.comment_id}
-              comment={comment}
-              setComments={setComments}
-            />
-          </div>
-        ))}
-      </ul>
-      <AddComment
-        article_id={article_id}
-        username={username}
-        setComments={setComments}
-      />
+      {comments.length === 0 ? (
+        <p>This post has no comments. Be the first to comment!</p>
+      ) : (
+        <ul>
+          {comments.map((comment) => (
+            <li>
+              <CommentCard
+                key={comment.comment_id}
+                username={username}
+                comment={comment}
+                setComments={setComments}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
+      {!username ? (
+        <Link to="/users">
+          <button>Sign in to comment</button>
+        </Link>
+      ) : (
+        <AddComment
+          article_id={article_id}
+          username={username}
+          setComments={setComments}
+        />
+      )}
     </div>
   );
 }
